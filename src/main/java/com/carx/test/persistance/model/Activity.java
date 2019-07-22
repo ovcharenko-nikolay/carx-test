@@ -1,13 +1,24 @@
 package com.carx.test.persistance.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.time.ZonedDateTime;
 import java.util.UUID;
 
+@Entity
+@Table(name = "activities")
 public class Activity {
 
+    @Id
+    @Column(name = "uuid")
     private UUID uuid;
+    @Column(name = "user_uuid")
     private UUID userUUID;
+    @Column(name = "activity")
     private Integer activity;
+    @Column(name = "create_date")
     private ZonedDateTime createDate;
 
     public UUID getUuid() {

@@ -1,16 +1,27 @@
 package com.carx.test.persistance.model;
 
+import javax.persistence.*;
 import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.UUID;
 
+@Entity
+@Table(name = "users")
 public class User {
 
+    @Id
+    @Column(name = "uuid")
     private UUID uuid;
+    @Column(name = "json")
     private String json;
+    @Column(name = "money")
     private Integer money;
+    @Column(name = "country")
     private String country;
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_uuid")
     private List<Activity> activities;
+    @Column(name = "date")
     private ZonedDateTime date;
 
     public UUID getUuid() {
