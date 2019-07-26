@@ -21,8 +21,10 @@ public class User {
     @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_uuid")
     private List<Activity> activities;
-    @Column(name = "date")
-    private ZonedDateTime date;
+    @Column(name = "create_date")
+    private ZonedDateTime createDate;
+    @Column(name = "update_date")
+    private ZonedDateTime updateDate;
 
     public UUID getUuid() {
         return uuid;
@@ -64,12 +66,20 @@ public class User {
         this.activities = activities;
     }
 
-    public ZonedDateTime getDate() {
-        return date;
+    public ZonedDateTime getCreateDate() {
+        return createDate;
     }
 
-    public void setDate(ZonedDateTime date) {
-        this.date = date;
+    public void setCreateDate(ZonedDateTime createDate) {
+        this.createDate = createDate;
+    }
+
+    public ZonedDateTime getUpdateDate() {
+        return updateDate;
+    }
+
+    public void setUpdateDate(ZonedDateTime updateDate) {
+        this.updateDate = updateDate;
     }
 
     @Override
@@ -80,7 +90,8 @@ public class User {
                 ", money=" + money +
                 ", country='" + country + '\'' +
                 ", activities=" + activities +
-                ", date=" + date +
+                ", createDate=" + createDate +
+                ", updateDate=" + updateDate +
                 '}';
     }
 }

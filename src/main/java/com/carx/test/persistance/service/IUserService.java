@@ -7,7 +7,7 @@ import java.util.UUID;
 
 public interface IUserService {
 
-    void sync(User user) throws UserServiceException;
+    void sync(UUID userUUID, Integer money, String country, String json) throws UserServiceException;
 
     User currentState(UUID userUUID) throws UserServiceException;
 
