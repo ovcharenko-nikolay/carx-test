@@ -34,17 +34,18 @@ public class UserService implements IUserService {
             if (Objects.nonNull(userUUID) && Objects.nonNull(money) && Objects.nonNull(country) && Objects.nonNull(json)) {
                 Optional<User> userOptional = userRepo.findById(userUUID);
                 User user = null;
+                ZonedDateTime now = ZonedDateTime.now(ZoneId.of("UTC"));
                 if (userOptional.isPresent()) {
                     user = userOptional.get();
                 } else {
                     user = new User();
                     user.setUuid(userUUID);
-                    user.setCreateDate(ZonedDateTime.now(ZoneId.of("UTC")));
+                    user.setCreateDate(now);
                 }
                 user.setMoney(money);
                 user.setCountry(country);
                 user.setJson(json);
-                user.setUpdateDate(ZonedDateTime.now(ZoneId.of("UTC")));
+                user.setUpdateDate(now);
                 userRepo.save(user);
             } else {
                 throw new UserServiceException("userUUID, money, country, json must not be null!");
